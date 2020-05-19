@@ -1,10 +1,91 @@
 import React from "react"
-import { Card, CardTitle, CardBody, Form, FormGroup, Input } from "reactstrap"
+import {
+  Card,
+  CardTitle,
+  CardText,
+  CardBody,
+  Form,
+  FormGroup,
+  Input,
+} from "reactstrap"
 import { graphql, StaticQuery, Link } from "gatsby"
 import Img from "gatsby-image"
+import {
+  faFacebookF,
+  faTwitter,
+  faInstagram,
+  faGoogle,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-const Sidebar = () => (
+const Sidebar = ({ author, authorFluid }) => (
   <div>
+    {author && (
+      <Card>
+        <Img className="card-image-top" fluid={authorFluid} />
+        <CardBody>
+          <CardTitle className="text-center text-uppercase mb-3">
+            {author.name}
+          </CardTitle>
+          <CardText>{author.bio}</CardText>
+          <div className="author-social-links text-center">
+            <ul>
+              <li>
+                <a
+                  href={author.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fa-lg facebook"
+                >
+                  <FontAwesomeIcon icon={faFacebookF} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={author.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fa-lg twitter"
+                >
+                  <FontAwesomeIcon icon={faTwitter} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={author.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fa-lg instagram"
+                >
+                  <FontAwesomeIcon icon={faInstagram} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={author.google}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fa-lg google"
+                >
+                  <FontAwesomeIcon icon={faGoogle} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={author.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fa-lg linkedin"
+                >
+                  <FontAwesomeIcon icon={faLinkedin} />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </CardBody>
+      </Card>
+    )}
     <Card>
       <CardBody>
         <CardTitle className="text-center text-uppercase mb3">
